@@ -1,0 +1,18 @@
+/* Scan only the app sources (class names live in the *.template.html files). */
+@import "tailwindcss" source(none);
+@source "./index.html";
+@source "./app";
+
+/* Hide un-compiled AngularJS templates until bootstrap finishes. */
+[ng-cloak],
+.ng-cloak {
+  display: none !important;
+}
+
+/*
+ * <lucide-icon> is only a host for the generated <svg>; display: contents makes
+ * the svg lay out as if it were the direct child, the way lucide-react renders.
+ */
+lucide-icon {
+  display: contents;
+}

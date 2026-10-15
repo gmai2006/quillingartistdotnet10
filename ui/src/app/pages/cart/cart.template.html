@@ -1,0 +1,113 @@
+<div class="mb-6 border-t bg-gray-800 p-6 text-white">
+  <h1 class="text-2xl font-semibold">Shopping Cart</h1>
+</div>
+
+<div class="mx-auto max-w-6xl px-4">
+  <div class="grid gap-6 md:grid-cols-12">
+    <div class="md:col-span-9">
+      <div class="rounded-xl border bg-white shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="border-b text-left text-xs uppercase text-gray-500">
+              <tr>
+                <th class="p-4">Product</th>
+                <th class="p-4 w-32">Quantity</th>
+                <th class="p-4 w-40">Price</th>
+                <th class="p-4 w-32"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr ng-repeat="entry in $ctrl.cart.items() track by entry.product.id" class="border-b">
+                <td class="p-4">
+                  <div class="flex items-center gap-4">
+                    <img ng-src="/{{ ::entry.product.imageUrl }}"
+                         alt="{{ ::entry.product.name }}"
+                         class="hidden md:block w-20 rounded" />
+                    <div>
+                      <a ng-href="/product/detail/{{ ::entry.product.id }}" class="font-medium hover:underline">
+                        {{ ::entry.product.name }}
+                      </a>
+                      <p class="text-sm text-gray-500">{{ ::entry.product.name }}</p>
+                    </div>
+                  </div>
+                </td>
+
+                <td class="p-4">
+                  <div class="flex items-center border rounded-md w-fit">
+                    <button type="button" class="p-2 hover:bg-gray-100" aria-label="Decrease quantity"
+                            ng-click="$ctrl.cart.remove(entry.product.id)">
+                      <lucide-icon name="Minus" size="16"></lucide-icon>
+                    </button>
+                    <input class="w-12 text-center outline-none" value="{{ entry.count }}" readonly />
+                    <button type="button" class="p-2 hover:bg-gray-100" aria-label="Increase quantity"
+                            ng-click="$ctrl.cart.add(entry.product)">
+                      <lucide-icon name="Plus" size="16"></lucide-icon>
+                    </button>
+                  </div>
+                </td>
+
+                <td class="p-4">
+                  <div class="font-semibold">{{ entry.product.price * entry.count | currency:'$':2 }}</div>
+                  <div class="text-sm text-gray-500">{{ ::entry.product.price | currency:'$':2 }} each</div>
+                </td>
+
+                <td class="p-4 text-right space-x-2">
+                  <button type="button" class="p-2 border rounded hover:bg-gray-100" aria-label="Save for later">
+                    <lucide-icon name="Heart" size="18"></lucide-icon>
+                  </button>
+                  <button type="button" class="p-2 border rounded text-red-500 hover:bg-red-50" aria-label="Remove"
+                          ng-click="$ctrl.cart.removeAll(entry.product.id)">
+                    <lucide-icon name="Trash2" size="18"></lucide-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex items-center gap-4 border-t p-4">
+          <a href="/" class="flex items-center gap-2 rounded-lg border px-4 py-2 hover:bg-gray-100">
+            <lucide-icon name="ChevronLeft" size="18"></lucide-icon>
+            Continue shopping
+          </a>
+
+          <a ng-if="!$ctrl.cart.isEmpty()"
+             href="/checkout"
+             class="ml-auto flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
+            Make Purchase
+            <lucide-icon name="ChevronRight" size="18"></lucide-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:col-span-3 space-y-4">
+      <div class="rounded-xl border bg-white p-4 shadow-sm">
+        <coupon-apply-form on-submit="$ctrl.applyCoupon(values)"></coupon-apply-form>
+      </div>
+
+      <div class="rounded-xl border bg-white p-4 shadow-sm">
+        <div class="space-y-2 border-b pb-4 text-sm">
+          <div class="flex justify-between">
+            <span>Total price:</span>
+            <span>{{ $ctrl.cart.totalCost() | currency:'$':2 }}</span>
+          </div>
+          <div class="flex justify-between text-green-600">
+            <span>Discount:</span>
+            <span>-$0.00</span>
+          </div>
+          <div class="flex justify-between text-green-600">
+            <span>Coupon:</span>
+            <span>-$0.00</span>
+          </div>
+        </div>
+
+        <div class="flex justify-between pt-4 font-semibold text-lg">
+          <span>Total:</span>
+          <span>{{ $ctrl.cart.totalCost() | currency:'$':2 }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="border rounded-lg overflow-hidden">
+  <div class="text-center py-6 border-b">
+    <div class="flex justify-center mb-2">
+      <lucide-icon name="{{ ::$ctrl.icon }}" icon-class="{{ ::$ctrl.iconClass }}"></lucide-icon>
+    </div>
+    <h3 class="font-semibold">{{ ::$ctrl.heading }}</h3>
+  </div>
+
+  <div class="flex flex-col">
+    <a ng-repeat="link in ::$ctrl.links track by $index" href="/" class="px-4 py-2 hover:bg-gray-50 text-sm">{{ ::link }}</a>
+  </div>
+</div>

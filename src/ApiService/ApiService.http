@@ -1,0 +1,36 @@
+@ApiService_HostAddress = http://localhost:9000
+@token = <output of: python3 test/make_token.py  (signed with the Development key, valid 1 hour)>
+
+GET {{ApiService_HostAddress}}/api/products
+Accept: text/plain
+
+###
+
+GET {{ApiService_HostAddress}}/api/products/selectAll?page=0&pageSize=25
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+
+GET {{ApiService_HostAddress}}/api/products/export?page=0&pageSize=100
+Authorization: Bearer {{token}}
+
+###
+
+POST {{ApiService_HostAddress}}/api/checkout/create-session
+Content-Type: application/json
+
+{
+  "items": [{ "productId": 1, "quantity": 2 }],
+  "customerEmail": "test@example.com",
+  "customerName": "Test Customer"
+}
+
+###
+
+POST {{ApiService_HostAddress}}/api/checkout/confirm
+Content-Type: application/json
+
+{ "sessionId": "cs_test_..." }
+
+###

@@ -1,0 +1,13 @@
+bin/
+obj/
+.idea/
+.vs/
+*.user
+.vscode/
+.env
+init.sh
+run.sh
+ui/node_modules/
+src/ApiService/bin/
+src/ApiService/obj/
+ui/dist/

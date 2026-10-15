@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <base href="/" />
+    <link rel="icon" type="image/png" href="/quillingartist.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quilling Artist</title>
+    <!-- build:css -->
+    <link rel="stylesheet" href="/app.css" />
+    <!-- /build:css -->
+  </head>
+  <body ng-app="quillingApp" ng-strict-di>
+    <quilling-app ng-cloak></quilling-app>
+
+    <script src="/vendor/angular.min.js"></script>
+    <script src="/vendor/angular-route.min.js"></script>
+    <script src="/vendor/lucide.min.js"></script>
+
+    <!-- build:js -->
+    <script src="/app/app.module.js"></script>
+    <script src="/app/app.config.js"></script>
+
+    <script src="/app/services/array-utils.service.js"></script>
+    <script src="/app/services/product.service.js"></script>
+    <script src="/app/services/cart.service.js"></script>
+    <script src="/app/services/checkout.service.js"></script>
+
+    <script src="/app/directives/lucide-icon.directive.js"></script>
+
+    <script src="/app/components/loading-spinner/loading-spinner.component.js"></script>
+    <script src="/app/components/search-box/search-box.component.js"></script>
+    <script src="/app/components/app-header/app-header.component.js"></script>
+    <script src="/app/components/top-menu/top-menu.component.js"></script>
+    <script src="/app/components/app-footer/app-footer.component.js"></script>
+    <script src="/app/components/card-featured-product/card-featured-product.component.js"></script>
+    <script src="/app/components/product-details-info/product-details-info.component.js"></script>
+    <script src="/app/components/shipping-returns/shipping-returns.component.js"></script>
+    <script src="/app/components/coupon-apply-form/coupon-apply-form.component.js"></script>
+    <script src="/app/components/contact-us-form/contact-us-form.component.js"></script>
+    <script src="/app/components/support-card/support-card.component.js"></script>
+
+    <script src="/app/pages/product-list/product-list.component.js"></script>
+    <script src="/app/pages/product-detail/product-detail.component.js"></script>
+    <script src="/app/pages/search-result/search-result.component.js"></script>
+    <script src="/app/pages/cart/cart.component.js"></script>
+    <script src="/app/pages/checkout/checkout.component.js"></script>
+    <script src="/app/pages/checkout-success/checkout-success.component.js"></script>
+    <script src="/app/pages/contact-us/contact-us.component.js"></script>
+    <script src="/app/pages/documentation/documentation.component.js"></script>
+    <script src="/app/pages/support/support.component.js"></script>
+    <script src="/app/pages/privacy/privacy.component.js"></script>
+    <script src="/app/pages/security/security.component.js"></script>
+    <script src="/app/pages/return-policy/return-policy.component.js"></script>
+    <script src="/app/pages/term-use/term-use.component.js"></script>
+    <script src="/app/pages/not-found/not-found.component.js"></script>
+    <script src="/app/pages/server-error/server-error.component.js"></script>
+
+    <script src="/app/app.component.js"></script>
+    <!-- /build:js -->
+  </body>
+</html>

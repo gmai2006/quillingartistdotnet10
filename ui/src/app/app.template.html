@@ -1,0 +1,10 @@
+<loading-spinner ng-if="$ctrl.loading"></loading-spinner>
+
+<div ng-if="!$ctrl.loading" class="flex min-h-screen flex-col">
+  <app-header></app-header>
+  <top-menu></top-menu>
+  <main class="flex-1 container mx-auto px-4 py-6">
+    <div ng-view></div>
+  </main>
+  <app-footer></app-footer>
+</div>

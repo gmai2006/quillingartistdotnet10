@@ -1,0 +1,20 @@
+<div ng-if="$ctrl.results().length === 0" class="text-center py-12 text-gray-500">
+  No products found.
+</div>
+
+<div ng-if="$ctrl.results().length > 0"
+     class="max-w-6xl mx-auto px-4 py-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+  <div ng-repeat="product in $ctrl.results() track by product.id"
+       class="border rounded-lg overflow-hidden hover:shadow-lg transition">
+    <a ng-href="/product/detail/{{ ::product.id }}">
+      <img ng-src="/{{ ::product.imageUrl }}" alt="{{ ::product.name }}" class="w-full h-48 object-cover" />
+    </a>
+
+    <div class="p-4">
+      <a ng-href="/product/detail/{{ ::product.id }}">
+        <h2 class="font-semibold text-lg hover:text-blue-600">{{ ::product.name }}</h2>
+      </a>
+      <div class="text-gray-700 font-medium mt-2">{{ ::product.price | currency:'$':2 }}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<footer class="bg-gray-900 text-gray-300">
+  <div class="container mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+
+      <div>
+        <h6 class="text-lg font-semibold text-white">Quilling Artist</h6>
+        <hr class="my-4 border-gray-700" />
+        <p class="text-sm leading-relaxed">
+          Quilling is the art of rolled, shaped, and glued paper that results in creating a unified, decorative design. The name quilling is thought to come from the origin of the art; birds' feathers, or quills, were used to coil the strips of paper around.
+        </p>
+      </div>
+
+      <div>
+        <h6 class="text-lg font-semibold text-white">Products</h6>
+        <hr class="my-4 border-gray-700" />
+        <ul class="space-y-3">
+          <li ng-repeat="cat in ::$ctrl.categories track by $index"
+              class="border-b border-gray-800 pb-2 last:border-0 last:pb-0">
+            <a ng-href="/category/{{ ::cat }}" class="block transition-colors hover:text-white">{{ ::cat }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h6 class="text-lg font-semibold text-white">Policy</h6>
+        <hr class="my-4 border-gray-700" />
+        <ul class="space-y-3">
+          <!-- Return Policy (/return) and Terms Of Use (/term) links are hidden, as in the React UI. -->
+          <li class="border-b border-gray-800 pb-2">
+            <a href="/security" class="block transition-colors hover:text-white">Security</a>
+          </li>
+          <li class="border-b border-gray-800 pb-2 last:border-0 last:pb-0">
+            <a href="/privacy" class="block transition-colors hover:text-white">Privacy</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h6 class="text-lg font-semibold text-white">Customer Care</h6>
+        <hr class="my-4 border-gray-700" />
+        <div class="flex flex-col space-y-4">
+          <div class="flex items-center gap-3">
+            <lucide-icon name="Mail" icon-class="h-5 w-5 text-gray-400"></lucide-icon>
+            <span>support@quillingartist.com</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>

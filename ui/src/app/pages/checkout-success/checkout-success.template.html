@@ -1,0 +1,37 @@
+<div class="mb-6 border-t bg-gray-800 p-6 text-white">
+  <h1 class="text-2xl font-semibold">Order Confirmation</h1>
+</div>
+
+<div class="mx-auto max-w-xl px-6 py-16 text-center" ng-switch="$ctrl.status">
+
+  <div ng-switch-when="loading" class="flex flex-col items-center gap-3 text-gray-600">
+    <lucide-icon name="Loader2" size="40" icon-class="animate-spin"></lucide-icon>
+    <p>Confirming your payment with Stripe...</p>
+  </div>
+
+  <div ng-switch-when="success" class="flex flex-col items-center gap-3">
+    <lucide-icon name="CheckCircle2" size="48" icon-class="text-green-600"></lucide-icon>
+    <h2 class="text-xl font-semibold text-gray-900">Payment successful!</h2>
+    <p class="text-gray-600">
+      Thank you<span ng-if="$ctrl.order.customerName">, {{ $ctrl.order.customerName }}</span>.
+      <span ng-if="$ctrl.order.orderId">Your order #{{ $ctrl.order.orderId }} has been placed.</span>
+      <span ng-if="!$ctrl.order.orderId">Your order has been placed.</span>
+    </p>
+    <p ng-if="$ctrl.order.total != null" class="text-sm text-gray-500">
+      Total charged: {{ $ctrl.order.total | currency:'$':2 }}
+    </p>
+    <a href="/" class="mt-4 inline-flex items-center rounded-lg bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-700">
+      Continue shopping
+    </a>
+  </div>
+
+  <div ng-switch-when="error" class="flex flex-col items-center gap-3">
+    <lucide-icon name="XCircle" size="48" icon-class="text-red-600"></lucide-icon>
+    <h2 class="text-xl font-semibold text-gray-900">We couldn't confirm your payment</h2>
+    <p class="text-gray-600">{{ $ctrl.error }}</p>
+    <a href="/cart" class="mt-4 inline-flex items-center rounded-lg border px-6 py-3 font-medium hover:bg-gray-100">
+      Back to cart
+    </a>
+  </div>
+
+</div>

@@ -1,0 +1,21 @@
+services:
+  quillingartistdotnetui:
+    build: .
+    image: quillingartistdotnetui:latest
+    container_name: quillingartistdotnetui
+    # Published for direct testing by IP over plain HTTP: http://<host-ip>:8080/
+    # To put it behind nginx-proxy instead, remove "ports" and add the VIRTUAL_HOST /
+    # LETSENCRYPT_HOST / LETSENCRYPT_EMAIL / VIRTUAL_PORT=80 variables used by
+    # ../../quillingartistv2/ui/docker-compose.yml.
+    ports:
+      - "${UI_PORT:-8080}:80"
+    # nginx.conf proxies /api to the "quillingartistdotnet" container (../docker-compose.yml),
+    # so both must be on proxy-net.
+    networks:
+      - proxy-net
+    restart: always
+
+networks:
+  # Shared with ../docker-compose.yml. Create it once: docker network create proxy-net
+  proxy-net:
+    external: true

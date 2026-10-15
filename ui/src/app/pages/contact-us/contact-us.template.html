@@ -1,0 +1,47 @@
+<div class="mx-auto max-w-6xl px-4 py-6">
+  <div class="grid gap-6 md:grid-cols-12">
+
+    <div class="md:col-span-8">
+      <div class="rounded-lg border bg-white shadow-sm">
+        <div class="flex items-center gap-2 border-b p-4 font-semibold">
+          <lucide-icon name="Mail" size="18"></lucide-icon>
+          Send Message
+        </div>
+        <div class="p-4">
+          <contact-us-form on-submit="$ctrl.send(values)"></contact-us-form>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:col-span-4 space-y-4">
+      <div class="rounded-lg border bg-white shadow-sm">
+        <div class="flex items-center gap-2 border-b p-4 font-semibold">
+          <lucide-icon name="Home" size="18"></lucide-icon>
+          Address
+        </div>
+
+        <div class="space-y-4 p-4 text-sm">
+          <div ng-repeat="title in ::$ctrl.offices track by $index">
+            <h6 class="border-b pb-2 font-semibold">{{ ::title }}</h6>
+            <address class="not-italic text-gray-600">
+              <strong>Twitter, Inc.</strong><br />
+              1355 Market St, Suite 900<br />
+              San Francisco, CA 94103<br />
+              <lucide-icon name="Phone" size="14" icon-class="inline mr-1"></lucide-icon>
+              (123) 456-7890
+            </address>
+          </div>
+        </div>
+      </div>
+
+      <div class="overflow-hidden rounded-lg border">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d313635.5491853188!2d-122.57606416467848!3d37.20933611930123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085815c67b3754d%3A0xb42714f3436732f2!2s1355%20Market%20St%20%23900%2C%20San%20Francisco%2C%20CA%2094103%2C%20USA!5e0!3m2!1sen!2sin!4v1599193189366!5m2!1sen!2sin"
+          class="h-72 w-full border-0"
+          loading="lazy"
+          title="Location"></iframe>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<form class="relative w-full" ng-submit="$ctrl.search()">
+  <div class="flex w-full shadow-sm">
+    <label class="sr-only" for="searchInput-{{ ::$id }}">Search</label>
+    <input
+      id="searchInput-{{ ::$id }}"
+      name="searchInput"
+      type="text"
+      class="w-full rounded-l-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+      placeholder="Search"
+      required
+      ng-model="$ctrl.searchVal"
+    />
+    <button
+      type="submit"
+      aria-label="Search"
+      ng-disabled="!$ctrl.searchVal"
+      class="flex items-center justify-center rounded-r-lg bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-400"
+    >
+      <lucide-icon name="Search" icon-class="h-5 w-5"></lucide-icon>
+    </button>
+  </div>
+
+  <div ng-if="$ctrl.showEmpty"
+       class="absolute left-0 top-full z-50 mt-2 w-full rounded-md border border-red-200 bg-red-50 p-3 shadow-lg">
+    <h3 class="text-sm font-medium text-red-800">
+      Search result is empty. Please try again.
+    </h3>
+  </div>
+</form>

@@ -1,0 +1,28 @@
+services:
+  quillingartistdotnet:
+    build: .
+    image: quillingartistdotnet:latest
+    # The UI's nginx (ui/nginx.conf) proxies /api to this container name on proxy-net.
+    container_name: quillingartistdotnet
+    # Published for direct testing by IP over plain HTTP: http://<host-ip>:8003/api/...
+    # Remove this when the API should only be reachable through the UI's nginx.
+    ports:
+      - "${API_PORT:-8003}:8003"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      # host.docker.internal is the Docker gateway, not 127.0.0.1: the host's Postgres must
+      # listen on that address and allow it in pg_hba.conf (see README, "Docker").
+      - ConnectionStrings__Default=Host=host.docker.internal;Port=5432;Database=app_db;Username=app_user;Password=${DB_PASSWORD:?DB_PASSWORD is not set};Search Path=quillingartist
+      - Stripe__SecretKey=${STRIPE_SECRET_KEY:?STRIPE_SECRET_KEY is not set}
+      - Email__Brevo__ApiKey=${BREVO_API_KEY:?BREVO_API_KEY is not set}
+      - Sms__Brevo__ApiKey=${BREVO_API_KEY}
+      - Jwt__SigningKey=${JWT_SIGNING_KEY:?JWT_SIGNING_KEY is not set}
+    networks:
+      - proxy-net
+    restart: always
+
+networks:
+  # Shared with ui/docker-compose.yml. Create it once: docker network create proxy-net
+  proxy-net:
+    external: true

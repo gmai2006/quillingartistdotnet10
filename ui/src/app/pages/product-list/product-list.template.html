@@ -1,0 +1,31 @@
+<div ng-if="$ctrl.filtered.length === 0" class="flex min-h-[50vh] items-center justify-center text-gray-500">
+  <p class="text-lg">No products found in this category.</p>
+</div>
+
+<div ng-if="$ctrl.filtered.length > 0" class="container mx-auto px-4 py-8">
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div ng-repeat="product in $ctrl.filtered track by product.id"
+         class="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md">
+
+      <a ng-href="/product/detail/{{ ::product.id }}" class="overflow-hidden">
+        <img class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+             ng-src="/{{ ::product.imageUrl }}"
+             alt="{{ ::product.name }}"
+             loading="lazy" />
+      </a>
+
+      <div class="flex flex-1 flex-col p-5">
+        <a ng-href="/product/detail/{{ ::product.id }}" class="transition-colors hover:text-blue-600">
+          <h2 class="text-lg font-semibold text-gray-800 line-clamp-2">{{ ::product.name }}</h2>
+        </a>
+
+        <div class="mt-2 flex items-center text-sm text-gray-500">
+          <lucide-icon name="Star" icon-class="mr-1 h-4 w-4 fill-yellow-400 text-yellow-400"></lucide-icon>
+          <span>{{ ::(product.stock || 0) }} Stock</span>
+        </div>
+
+        <div class="mt-auto pt-4 text-xl font-bold text-gray-900">{{ ::product.price | currency:'$':2 }}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="mx-auto max-w-6xl px-4 py-6">
+  <div class="grid md:grid-cols-12 gap-6">
+
+    <div class="md:col-span-3">
+      <nav class="flex flex-col gap-2">
+        <button ng-repeat="tab in ::$ctrl.tabs track by tab.id"
+                type="button"
+                ng-click="$ctrl.activeTab = tab.id"
+                class="flex items-center gap-2 rounded-lg px-4 py-2 text-left text-sm transition"
+                ng-class="$ctrl.activeTab === tab.id ? 'bg-blue-600 text-white' : 'bg-gray-100 hover:bg-gray-200'">
+          <lucide-icon name="{{ ::tab.icon }}" size="18"></lucide-icon>
+          {{ ::tab.label }}
+        </button>
+      </nav>
+    </div>
+
+    <div class="md:col-span-9">
+      <div class="rounded-xl border bg-white p-6 shadow-sm">
+        <h4 class="text-lg font-semibold">{{ $ctrl.activeLabel() }}</h4>
+        <hr class="my-4" />
+      </div>
+    </div>
+
+  </div>
+</div>

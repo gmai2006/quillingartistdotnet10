@@ -1,0 +1,11 @@
+Test run: 2026-10-06 00:40:42
+Total tests: 6
+
+PASSED [200] users: http://localhost:9000/api/users/selectAll
+PASSED [200] products: http://localhost:9000/api/products/selectAll
+PASSED [200] customers: http://localhost:9000/api/customers/selectAll
+PASSED [200] orders: http://localhost:9000/api/orders/selectAll
+PASSED [200] orderitems: http://localhost:9000/api/orderitems/selectAll
+PASSED [200] addresses: http://localhost:9000/api/addresses/selectAll
+
+Passed: 6  Failed: 0

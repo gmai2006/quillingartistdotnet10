@@ -1,0 +1,28 @@
+<nav class="bg-gray-900 text-white shadow-md">
+  <div class="container mx-auto px-4">
+
+    <div class="flex items-center justify-between py-3 lg:hidden">
+      <span class="text-sm font-semibold uppercase tracking-wider text-gray-400">Categories</span>
+      <button
+        type="button"
+        ng-click="$ctrl.toggleMenu()"
+        class="rounded p-1 text-gray-400 hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600"
+        aria-expanded="{{ $ctrl.isOpen }}"
+        aria-label="Toggle navigation"
+      >
+        <lucide-icon name="{{ $ctrl.isOpen ? 'X' : 'Menu' }}" icon-class="h-6 w-6"></lucide-icon>
+      </button>
+    </div>
+
+    <div class="lg:block pb-4 lg:pb-0" ng-class="$ctrl.isOpen ? 'block' : 'hidden'">
+      <ul class="flex flex-col space-y-1 lg:flex-row lg:space-x-2 lg:space-y-0 lg:py-3">
+        <li ng-repeat="cat in ::$ctrl.categories track by $index">
+          <a class="block rounded-md px-4 py-2 text-sm font-medium text-gray-300 transition-colors hover:bg-gray-800 hover:text-white"
+             ng-href="/category/{{ ::cat }}"
+             ng-click="$ctrl.isOpen = false">{{ ::cat }}</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
